@@ -4,7 +4,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 document.body.appendChild(canvas);
 
-const snowflakes = [];
+const snowflakes = document.querySelectorAll('.snowflake');
 
 function createSnowflake() {
   const size = Math.random() * 10 + 10;
@@ -17,6 +17,7 @@ function createSnowflake() {
 function updateSnowflakes() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   snowflakes.forEach((snowflake, index) => {
+  snowflake.style.setProperty('--random-x', Math.random());
     snowflake.y += snowflake.speed;
     if (snowflake.y > canvas.height) {
       snowflakes.splice(index, 1);
@@ -37,3 +38,4 @@ function animate() {
 }
 
 animate();
+
